@@ -6,3 +6,4 @@ urlpatterns = [
     path('connexion/', views.connexion, name='connexion'),  # Page de connexion avec ta vue personnalisée
     path('deconnexion/', views.deconnexion, name='deconnexion'),  # Déconnexion
 ]
+

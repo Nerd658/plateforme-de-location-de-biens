@@ -8,9 +8,9 @@ from django.shortcuts import get_object_or_404
 
 # Create your views here.
 
-@login_required
+# @login_required
 def acceuil(request):
-    return render(request, 'profile_utilisateur/acceuil.html') 
+    return render(request, 'raccourcis/base.html') 
 
 @login_required
 def profile(request):
@@ -27,6 +27,25 @@ def profile(request):
 
     # Affiche le formulaire et les informations actuelles de l'utilisateur
     return render(request, 'profile_utilisateur/profile.html', {
+        'form': form,
+        'profile': profile  # Envoi du profil à afficher dans la page
+    })
+    
+@login_required
+def mise(request):
+    # Récupérer le profil de l'utilisateur connecté, le créer si nécessaire
+    profile, created = Profile.objects.get_or_create(user=request.user)
+
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('acceuil')  # Redirige vers la page d'accueil après mise à jour
+    else:
+        form = ProfileForm(instance=profile)
+
+    # Affiche le formulaire et les informations actuelles de l'utilisateur
+    return render(request, 'profile_utilisateur/mise.html', {
         'form': form,
         'profile': profile  # Envoi du profil à afficher dans la page
     })

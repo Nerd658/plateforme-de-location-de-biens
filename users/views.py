@@ -42,7 +42,7 @@ def inscription(request):
             messages.error(request, "Veuillez renseigner les mêmes mots de passe.")
         elif form.is_valid():  # Validation du formulaire
             user = form.save(commit=False)  # Ne pas sauvegarder tout de suite
-            user.email = email  # Assurez-vous d'enregistrer l'email
+            user.email = email  # enregistrer l'email
             user.save()  # Maintenant, sauvegardez l'utilisateur
             messages.success(request, "Inscription réussie !")
             return redirect('connexion')

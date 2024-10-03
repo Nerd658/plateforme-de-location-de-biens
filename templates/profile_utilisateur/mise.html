@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Profil</title>
+    <link rel="stylesheet" href="{% static 'profile_utilisateur/css/style.css' %}">
+</head>
+<body>
+    <div class="profile-container">
+
+        
+        <h2>Informations de l'utilisateur</h2>
+        <ul class="user-info">
+            <li><strong>Nom d'utilisateur :</strong> {{ user.username }}</li>
+            <li><strong>Email :</strong> {{ user.email }}</li>
+            <li><strong>Ville :</strong> {{ user.profile.ville }}</li>
+            <li><strong>Numéro de téléphone :</strong> {{ user.profile.telephone }}</li>
+        </ul>
+        
+        <!-- Formulaire de mise à jour du profil -->
+        <form method="POST" enctype="multipart/form-data" class="update-form">
+            {% csrf_token %}
+            {{ form.as_p }}  <!-- Affiche le formulaire -->
+            <button type="submit">Mettre à jour mon profil</button>
+        </form>
+        
+        
+    </div>
+</body>
+</html>

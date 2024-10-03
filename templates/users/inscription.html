@@ -16,6 +16,180 @@
         margin: 0;
       }
 
+      .container {
+        background-color: white;
+        border-radius: 25px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 400px; /* Taille ajustée */
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      h1 {
+        margin-bottom: 20px;
+        font-size: 2rem;
+        text-align: center;
+      }
+
+      .form-outline {
+        margin-bottom: 15px;
+        position: relative;
+        width: 100%;
+      }
+
+      .form-outline i {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 10px;
+        color: #888;
+      }
+
+      .form-outline input {
+        width: 100%;
+        padding: 10px 40px; /* Ajustement du padding pour éviter le débordement */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box; /* Assurer que la taille prend en compte les bordures et le padding */
+      }
+
+      .form-outline label {
+        position: absolute;
+        top: -5px;
+        left: 40px;
+        background-color: white;
+        padding: 0 5px;
+        font-size: 0.9rem;
+        color: #888;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: white;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .btn:hover {
+        background-color: #0056b3;
+      }
+
+      .link {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      a {
+        color: #007bff;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .error {
+        color: red;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Inscription</h1>
+      <form method="post" action="{% url 'inscription' %}">
+        {% csrf_token %} {% if messages %} {% for message in messages %}
+        <div class="{% if message.tags %}{{ message.tags }}{% endif %}">
+          <i class="fas fa-exclamation-circle error-icon"></i>{{ message }}
+        </div>
+        {% endfor %} {% endif %}
+
+        <div class="form-outline">
+          <i class="fas fa-user"></i>
+          <input
+            type="text"
+            id="form3Example1c"
+            class="form-control"
+            name="username"
+            required
+          />
+          <label class="form-label" for="form3Example1c">Votre nom</label>
+        </div>
+
+        <div class="form-outline">
+          <i class="fas fa-envelope"></i>
+          <input
+            type="email"
+            id="form3Example2c"
+            class="form-control"
+            name="email"
+            required
+          />
+          <label class="form-label" for="form3Example2c">Votre e-mail</label>
+        </div>
+
+        <div class="form-outline">
+          <i class="fas fa-lock"></i>
+          <input
+            type="password"
+            id="form3Example4c"
+            class="form-control"
+            name="password1"
+            required
+          />
+          <label class="form-label" for="form3Example4c">Mot de passe</label>
+        </div>
+
+        <div class="form-outline">
+          <i class="fas fa-key"></i>
+          <input
+            type="password"
+            id="form3Example4cd"
+            class="form-control"
+            name="password2"
+            required
+          />
+          <label class="form-label" for="form3Example4cd"
+            >Répéter le mot de passe</label
+          >
+        </div>
+
+        <button type="submit" class="btn">S'inscrire</button>
+      </form>
+      <div class="link">
+        <a href="{% url 'connexion' %}">Se connecter</a>
+      </div>
+    </div>
+  </body>
+</html>
+
+{% comment %} code avec image {% endcomment %}
+
+<!-- templates/users/inscription.html -->
+{% comment %} <!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inscription</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #eee;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
       .error {
         color: red;
       }
@@ -122,15 +296,12 @@
       <div class="form-container">
         <h1>Inscription</h1>
         <form method="post" action="{% url 'inscription' %}">
-            {% csrf_token %} 
-                {% if messages %}
-                    {% for message in messages %}
-                        <div class="error">
-                            <i class="fas fa-exclamation-circle error-icon"></i>{{ message }}
-                        </div>
-                    {% endfor %}
-                {% endif %}
-          <br>
+          {% csrf_token %} {% if messages %} {% for message in messages %}
+          <div class="error">
+            <i class="fas fa-exclamation-circle error-icon"></i>{{ message }}
+          </div>
+          {% endfor %} {% endif %}
+          <br />
 
           <div class="form-outline">
             <i class="fas fa-user"></i>
@@ -198,3 +369,4 @@
     </div>
   </body>
 </html>
+{% endcomment %}

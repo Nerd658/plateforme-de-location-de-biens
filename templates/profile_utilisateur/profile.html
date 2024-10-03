@@ -1,37 +1,47 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Profil</title>
+    <link rel="stylesheet" href="{% static 'profile_utilisateur/css/style.css' %}">
 </head>
 <body>
-    <h1>Mon Profil</h1>
-    
-    <!-- Formulaire de mise à jour du profil -->
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}  <!-- Affiche le formulaire -->
-        <button type="submit">Mettre à jour mon profil</button>
-    </form>
-    
-    <a href="{% url 'acceuil' %}">Retour à l'accueil</a>
-    
-    <!-- Affichage des informations de l'utilisateur connecté -->
-    <h2>Informations de l'utilisateur</h2>
-    
-    <ul>
-        <li><strong>Nom d'utilisateur :</strong> {{ user.username }}</li>
-        <li><strong>Email :</strong> {{ user.email }}</li>
-        <li><strong>Ville :</strong> {{ user.profile.ville }}</li>
-        <li><strong>Numéro de téléphone :</strong> {{ user.profile.telephone }}</li>
-        <li><strong>Photo de profil :</strong> 
-            {% if user.profile.photo %}
-                <img src="{{ user.profile.photo.url }}" alt="Photo de profil" width="100" height="100">
-            {% else %}
-                Pas de photo de profil
-            {% endif %}
-        </li>
-    </ul>
-    
+    <div class="profile-container">
+        <div class="profile-header">
+            <a href="{% url 'acceuil' %}" class="back-arrow">&#8592; Retour à l'accueil</a>
+           
+           
+            <div class="profile-avatar">
+                {% if user.profile.photo %}
+                    <img src="{{ user.profile.photo.url }}" alt="Photo de profil" width="100" height="100">
+                {% else %}
+                    <div class="default-avatar">N/A</div>
+                {% endif %}
+            </div>
+            <h1>{{ user.username }}</h1>
+            <p>{{ user.profile.ville }}</p>
+            <div class="profile-actions">
+                <button class="action-btn">Connect</button>
+                <button class="action-btn">Message</button>
+            </div>
+        </div>
+        
+        <h2>Informations de l'utilisateur</h2>
+        <ul class="user-info">
+            <li><strong>Nom d'utilisateur :</strong> {{ user.username }}</li>
+            <li><strong>Email :</strong> {{ user.email }}</li>
+            <li><strong>Ville :</strong> {{ user.profile.ville }}</li>
+            <li><strong>Numéro de téléphone :</strong> {{ user.profile.telephone }}</li>
+        </ul>
+        
+        
+
+        <!-- Formulaire de mise à jour du profil -->
+
+        <a href="{% url 'mise' %}"> mise a jour du profile</a> 
+        
+    </div>
 </body>
 </html>
