@@ -1,0 +1,31 @@
+{% extends 'raccourcis/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Mes Biens Réservés</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Bien</th>
+                <th>Date de début</th>
+                <th>Date de fin</th>
+                <th>Date de réservation</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reservation in reservations %}
+                <tr>
+                    <td>{{ reservation.bien.titre }}</td>  <!-- Affiche le titre du bien réservé -->
+                    <td>{{ reservation.date_debut }}</td>  <!-- Date de début de la réservation -->
+                    <td>{{ reservation.date_fin }}</td>    <!-- Date de fin de la réservation -->
+                    <td>{{ reservation.date_creation }}</td>  <!-- Date de création de la réservation  cela correspond aussi a la date ou il a payer--> 
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4">Aucune réservation trouvée.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'raccourcis/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Réservation de {{ bien.titre }}</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Le formulaire sera automatiquement stylé avec des sélecteurs de dates -->
+        <button type="submit" class="btn btn-primary">Réserver</button>
+    </form>
+</div>
+{% endblock %}

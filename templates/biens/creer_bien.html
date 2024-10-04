@@ -1,0 +1,55 @@
+{% extends 'raccourcis/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Créer un Bien</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="titre" class="form-label">Titre</label>
+                <input type="text" class="form-control" name="titre" required>
+            </div>
+            <div class="col-md-6">
+                <label for="prix" class="form-label">Prix (FCFA)</label>
+                <input type="number" class="form-control" name="prix" required>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" name="description" rows="3" required></textarea>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="categorie" class="form-label">Catégorie</label>
+                <select class="form-control" name="categorie" required>
+                    {% for key, value in categories %}
+                        <option value="{{ key }}">{{ value }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="photo" class="form-label">Photo</label>
+                <input type="file" class="form-control" name="photo" required>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="date_debut" class="form-label">Date de Début</label>
+                <input type="date" class="form-control" name="date_debut" required>
+            </div>
+            <div class="col-md-6">
+                <label for="date_fin" class="form-label">Date de Fin</label>
+                <input type="date" class="form-control" name="date_fin" required>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Créer</button>
+    </form>
+</div>
+{% endblock %}

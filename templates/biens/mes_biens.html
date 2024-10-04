@@ -1,0 +1,18 @@
+{% extends 'raccourcis/base.html' %}  <!-- Étendre le base.html -->
+
+{% block content %}
+<h1>Mes biens</h1>
+
+<ul class="list-group">
+    {% for bien in biens %}
+        <li class="list-group-item">
+            <h2>{{ bien.titre }}</h2>
+            <p>{{ bien.description }}</p>
+            <p>Prix : {{ bien.prix }} FCFA</p>
+            <p>Catégorie : {{ bien.categorie }}</p>
+            <p>Disponible du {{ bien.date_debut_disponibilite }} au {{ bien.date_fin_disponibilite }}</p>
+            <img src="{{ bien.photo.url }}" alt="Photo du bien" class="img-fluid">
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'raccourcis/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Liste des Biens Disponibles</h2>
+    <div class="row">
+        {% for bien in biens %}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="{{ bien.photo.url }}" class="card-img-top" alt="{{ bien.titre }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ bien.titre }}</h5>
+                        <p class="card-text">{{ bien.description }}</p>
+                        <p class="card-text"><strong>Prix:</strong> {{ bien.prix }} FCFA</p>
+                        <p class="card-text"><strong>Catégorie:</strong> {{ bien.categorie }}</p>
+                        
+                        <a href="{% url 'reserver_bien' bien.id %}" class="btn btn-primary">Louer</a>
+
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>Aucun bien disponible pour le moment.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

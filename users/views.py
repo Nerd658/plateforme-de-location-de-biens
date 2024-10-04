@@ -1,23 +1,21 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
-from django.http import HttpResponse
+
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from profile_utilisateur.views import acceuil 
-import re
-
-# Create your views here.
-
-#ici cest pour la partie dinscription qui utlise le formulaire que nous avons personaliser users/forms.py
-
-
-# users/views.py
 import re
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
+
+
+#ici cest pour la partie dinscription qui utlise le formulaire que nous avons personaliser users/forms.py
+
+
+
 
 def inscription(request):
     if request.method == 'POST':
