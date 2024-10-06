@@ -1,0 +1,10 @@
+{% extends 'raccourcis/base.html' %}
+{% block content %}
+<h2>Supprimer le bien : {{ bien.titre }}</h2>
+<p>Voulez-vous vraiment supprimer ce bien ?</p>
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Supprimer</button>
+    <a href="{% url 'mes_biens' %}" class="btn btn-secondary">Annuler</a>
+</form>
+{% endblock %}

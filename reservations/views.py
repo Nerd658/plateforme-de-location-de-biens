@@ -3,29 +3,44 @@ from .models import Reservation
 from .forms import ReservationForm
 from django.contrib.auth.decorators import login_required
 from biens.models import Bien  # Importer le modèle Bien
+from django.contrib import messages  # Pour afficher des messages d'erreur ou de succès
 
 @login_required
 def reserver_bien(request, bien_id):
-    # Récupérer le bien par son ID
     bien = get_object_or_404(Bien, id=bien_id)
-
-    # Si la méthode est POST, cela signifie que l'utilisateur a soumis le formulaire
+    
     if request.method == 'POST':
         form = ReservationForm(request.POST)
         if form.is_valid():
-            # Créer une réservation mais ne pas l'enregistrer encore
-            reservation = form.save(commit=False)
-            reservation.utilisateur = request.user  # Associer la réservation à l'utilisateur connecté
-            reservation.bien = bien  # Associer la réservation au bien
-            reservation.save()  # Enregistrer la réservation dans la base de données
-
-            # Rediriger vers la page "Mes biens" après une réservation réussie
-            return redirect('mes_biens')  # Change cela en fonction de ton URL de redirection
+            # Récupérer les dates de la réservation
+            date_debut = form.cleaned_data['date_debut']
+            date_fin = form.cleaned_data['date_fin']
+            
+            # Vérifier les conflits de dates
+            if date_debut >= date_fin:
+                messages.error(request, "La date de début doit être avant la date de fin. Veuillez corriger les dates.")
+            else:
+                # Vérifier les conflits de dates
+                conflits = Reservation.objects.filter(
+                    bien=bien,
+                    date_debut__lte=date_fin,  # Si la date de début de la réservation existante est avant la fin de la nouvelle réservation
+                    date_fin__gte=date_debut    # Si la date de fin de la réservation existante est après le début de la nouvelle réservation
+                )
+            
+                if conflits.exists():
+                    # Si un conflit est trouvé, afficher un message d'erreur
+                    messages.error(request, "Ce bien est déjà réservé pour les dates sélectionnées. Veuillez choisir d'autres dates.")
+                else:
+                    # Si pas de conflit, on enregistre la réservation
+                    reservation = form.save(commit=False)
+                    reservation.utilisateur = request.user
+                    reservation.bien = bien
+                    reservation.save()
+                    messages.success(request, "Réservation effectuée avec succès!")
+                return redirect('biens_reserves')  # Redirection vers une page qui montre les réservations de l'utilisateur
     else:
-        # Si la méthode n'est pas POST, créer une nouvelle instance de formulaire
         form = ReservationForm()
 
-    # Rendre le template avec le formulaire et le bien
     return render(request, 'reservations/reserver_bien.html', {'form': form, 'bien': bien})
 
 @login_required

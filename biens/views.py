@@ -1,7 +1,9 @@
-from django.shortcuts import render , redirect
+from django.shortcuts import render , redirect , get_object_or_404
 from .models import Bien
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+
+from .forms import BienForm
 # Create your views here.
 
 
@@ -12,7 +14,7 @@ def liste_biens(request):
     return render(request, 'biens/liste_biens.html', {'biens': biens})
 
 # Vue pour afficher les biens créés par l'utilisateur connecté
-@login_required  # S'assure que l'utilisateur est connecté
+@login_required 
 def mes_biens(request):
     biens = Bien.objects.filter(utilisateur=request.user)  # Filtrer les biens de l'utilisateur connecté
     return render(request, 'biens/mes_biens.html', {'biens': biens})
@@ -48,3 +50,35 @@ def creer_bien(request):
         return redirect('acceuil')  # Redirige vers la page d'accueil après la création
 
     return render(request, 'biens/creer_bien.html' ,  {'categories': categories})  # Afficher le formulaire de création
+
+
+
+
+
+# Vue pour modifier un bien
+@login_required
+def modifier_bien(request, bien_id):
+    bien = get_object_or_404(Bien, id=bien_id)
+
+    if request.method == 'POST':
+        form = BienForm(request.POST, request.FILES, instance=bien)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Bien modifié avec succès.')
+            return redirect('mes_biens')
+    else:
+        form = BienForm(instance=bien)
+
+    return render(request, 'biens/modifier_bien.html', {'form': form, 'bien': bien})
+
+# Vue pour supprimer un bien
+@login_required
+def supprimer_bien(request, bien_id):
+    bien = get_object_or_404(Bien, id=bien_id)
+    
+    if request.method == 'POST':
+        bien.delete()
+        messages.success(request, 'Bien supprimé avec succès.')
+        return redirect('mes_biens')
+
+    return render(request, 'biens/supprimer_bien.html', {'bien': bien})

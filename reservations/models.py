@@ -14,4 +14,4 @@ class Reservation(models.Model):
     date_fin = models.DateField()  # Date de fin de location
 
     def __str__(self):
-        return f"{self.utilisateur.username} a réservé {self.bien.titre}"
+        return f"Réservation de {self.utilisateur} pour {self.bien} du {self.date_debut} au {self.date_fin}"

@@ -12,7 +12,14 @@
             <p>Catégorie : {{ bien.categorie }}</p>
             <p>Disponible du {{ bien.date_debut_disponibilite }} au {{ bien.date_fin_disponibilite }}</p>
             <img src="{{ bien.photo.url }}" alt="Photo du bien" class="img-fluid">
+            <ul>
+                <a href="{% url 'modifier_bien' bien.id  %}" class="btn btn-secondary">modifer</a>
+                <a href="{% url 'supprimer_bien' bien.id  %}" class="btn btn-secondary">sup</a>
+            </ul>
         </li>
     {% endfor %}
 </ul>
+
+
+
 {% endblock %}
