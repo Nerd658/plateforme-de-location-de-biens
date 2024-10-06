@@ -2,14 +2,16 @@ from django.shortcuts import render , redirect , get_object_or_404
 from .models import Bien
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-
+from django.utils import timezone
+from datetime import date
 from .forms import BienForm
 # Create your views here.
 
 
 # Vue pour afficher la liste de tous les biens disponibles
 def liste_biens(request):
-    biens = Bien.objects.filter(disponibilite=True) 
+    today = date.today()
+    biens = Bien.objects.filter(disponibilite=True, date_fin_disponibilite__gte=today) 
     print(biens)# On affiche uniquement les biens disponibles
     return render(request, 'biens/liste_biens.html', {'biens': biens})
 

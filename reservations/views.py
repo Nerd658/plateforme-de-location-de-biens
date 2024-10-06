@@ -52,3 +52,13 @@ def biens_reserves(request):
         'reservations': reservations,
     }
     return render(request, 'reservations/biens_reserves.html', context)
+
+@login_required
+def annuler_reservation(request, reservation_id):
+    reservation = get_object_or_404(Reservation, id=reservation_id, utilisateur=request.user)
+    
+    # On supprime la réservation
+    reservation.delete()
+    
+    messages.success(request, "Réservation annulée avec succès!")
+    return redirect('biens_reserves')  # Redirection vers la page des réservation

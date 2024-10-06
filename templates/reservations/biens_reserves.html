@@ -10,11 +10,13 @@
                 <th>Date de début</th>
                 <th>Date de fin</th>
                 <th>Date de réservation</th>
+                
             </tr>
         </thead>
         <tbody>
             {% for reservation in reservations %}
                 <tr>
+                    <td> <a href="{% url 'annuler_reservation' reservation.id %}">Annuler</a></td>
                     <td>{{ reservation.bien.titre }}</td>  <!-- Affiche le titre du bien réservé -->
                     <td>{{ reservation.date_debut }}</td>  <!-- Date de début de la réservation -->
                     <td>{{ reservation.date_fin }}</td>    <!-- Date de fin de la réservation -->
