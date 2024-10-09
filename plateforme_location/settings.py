@@ -144,5 +144,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')   # Chemin vers le dossier où les 
 MEDIA_URL = '/media/'  # URL de base pour accéder aux fichiers médias
 
 # settings.py
-STRIPE_TEST_PUBLIC_KEY = ''
-STRIPE_TEST_SECRET_KEY = ''
+STRIPE_TEST_PUBLIC_KEY = "pk_test_51Q7rWk2Ml1214h57D90iPNQBMdPYiblVKtZV48qEUjETKDxuLsywjqbbfWjMPaBXGWnncVRcb3OmGKhxKEZ4sXf100PSdcm2rV"
+STRIPE_TEST_SECRET_KEY = "sk_test_51Q7rWk2Ml1214h57UFVr3RYVGGC5XsHnECZwTILaa0gdPMjoRR0XXJN9e8Tmhy5TVpNIKUNULtgjahotyr7bQXFA002aHZinFb"

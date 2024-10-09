@@ -3,7 +3,7 @@ from django.conf import settings
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 import stripe
-
+from plateforme_location import settings
 stripe.api_key = settings.STRIPE_TEST_SECRET_KEY
 
 @csrf_exempt
@@ -21,11 +21,11 @@ def process_payment(request):
         except stripe.error.StripeError as e:
             # Gérer les erreurs
             return redirect('error')  # Redirigez vers une page d'erreur
-    return render(request, 'paiement.html')
+    return render(request, 'paiements/paiements.html')
 
 # paiement/views.py
 def success(request):
-    return render(request, 'success.html')
+    return render(request, 'paiements/success.html')
 
 def error(request):
-    return render(request, 'error.html')
+    return render(request, 'paiements/error.html')
