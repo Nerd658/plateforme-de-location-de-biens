@@ -143,3 +143,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')   # Chemin vers le dossier où les fichiers seront stockés
 MEDIA_URL = '/media/'  # URL de base pour accéder aux fichiers médias
 
+STRIPE_TEST_PUBLIC_KEY = "pk_test_51Q7rWk2Ml1214h57D90iPNQBMdPYiblVKtZV48qEUjETKDxuLsywjqbbfWjMPaBXGWnncVRcb3OmGKhxKEZ4sXf100PSdcm2rV"
+
+STRIPE_TEST_SECRET_KEY = "sk_test_51Q7rWk2Ml1214h57UFVr3RYVGGC5XsHnECZwTILaa0gdPMjoRR0XXJN9e8Tmhy5TVpNIKUNULtgjahotyr7bQXFA002aHZinFb"

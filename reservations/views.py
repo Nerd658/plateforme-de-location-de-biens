@@ -35,6 +35,7 @@ def reserver_bien(request, bien_id):
                     reservation = form.save(commit=False)
                     reservation.utilisateur = request.user
                     reservation.bien = bien
+                    reservation.status = 'en_attente' 
                     reservation.save()
                     messages.success(request, "Réservation effectuée avec succès!")
                 return redirect('biens_reserves')  # Redirection vers une page qui montre les réservations de l'utilisateur
