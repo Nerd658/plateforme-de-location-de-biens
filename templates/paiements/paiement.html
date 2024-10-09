@@ -1,0 +1,35 @@
+<!-- templates/paiement.html -->
+<form action="{% url 'process_payment' %}" method="POST" id="payment-form">
+    {% csrf_token %}
+    <div id="card-element"></div>
+    <button type="submit">Payer</button>
+    <div id="card-errors" role="alert"></div>
+</form>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    var stripe = Stripe('{{ STRIPE_TEST_PUBLIC_KEY }}');
+    var elements = stripe.elements();
+    
+    var cardElement = elements.create('card');
+    cardElement.mount('#card-element');
+
+    var form = document.getElementById('payment-form');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        stripe.confirmCardPayment('{{ client_secret }}', {
+            payment_method: {
+                card: cardElement
+            }
+        }).then(function(result) {
+            if (result.error) {
+                // Afficher une erreur à l'utilisateur
+                document.getElementById('card-errors').textContent = result.error.message;
+            } else {
+                // Si le paiement est réussi, rediriger l'utilisateur
+                form.submit();
+            }
+        });
+    });
+</script>
