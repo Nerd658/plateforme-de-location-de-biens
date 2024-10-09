@@ -1,0 +1,14 @@
+{% extends 'raccourcis/base.html' %}
+
+{% block content %}
+<h1>Supprimer l'avis</h1>
+
+<p>Êtes-vous sûr de vouloir supprimer cet avis sur "{{ avis.bien.titre }}" ?</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Oui, supprimer cet avis</button>
+    <a href="{% url 'detail_bien' avis.bien.id %}" class="btn btn-secondary">Annuler</a>
+</form>
+
+{% endblock %}

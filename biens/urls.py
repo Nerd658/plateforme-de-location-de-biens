@@ -7,4 +7,5 @@ urlpatterns = [
     path('creer/', views.creer_bien, name='creer_bien'), # Créer un bien
     path('modifier/<int:bien_id>/', views.modifier_bien, name='modifier_bien'),
     path('supprimer/<int:bien_id>/', views.supprimer_bien, name='supprimer_bien'),
+    path('detail/<int:bien_id>/', views.detail_bien, name='detail_bien')
 ]

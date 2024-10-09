@@ -1,0 +1,42 @@
+{% extends 'raccourcis/base.html' %}
+
+{% block content %}
+<div class="container">
+    <!-- Détails du bien -->
+    <h1>{{ bien.titre }}</h1>
+    <img src="{{ bien.photo.url }}" alt="{{ bien.titre }}" class="img-fluid">
+    <p><strong>Catégorie : </strong>{{ bien.categorie }}</p>
+    <p><strong>Prix : </strong>{{ bien.prix }} FCFA</p>
+    <p><strong>Description : </strong>{{ bien.description }}</p>
+    <p><strong>Disponibilité : </strong> 
+        {% if bien.disponibilite %}
+            Disponible
+        {% else %}
+            Indisponible
+        {% endif %}
+    </p>
+
+    <!-- Avis associés au bien -->
+    <h2>Avis</h2>
+    {% if bien.avis_set.all %}
+        {% for avis in bien.avis_set.all %}
+            <div class="avis">
+                <p><strong>{{ avis.utilisateur.username }} :</strong> {{ avis.note }}/5</p>
+                <p>{{ avis.texte }}</p>
+                <p>Posté le : {{ avis.date_creation }}</p>
+
+                {% if avis.utilisateur == request.user %}
+                    <a href="{% url 'supprimer_avis' avis.id %}" class="btn btn-danger">Supprimer</a>
+                {% endif %}
+            </div>
+            <hr>
+        {% endfor %}
+    {% else %}
+        <p>Aucun avis pour ce bien.</p>
+    {% endif %}
+
+    <!-- Lien pour ajouter un avis -->
+    <a href="{% url 'ajouter_avis' bien.id %}" class="btn btn-primary">Ajouter un avis</a>
+
+</div>
+{% endblock %}

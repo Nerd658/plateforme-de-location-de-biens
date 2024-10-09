@@ -15,6 +15,7 @@
                         <p class="card-text"><strong>Catégorie:</strong> {{ bien.categorie }}</p>
                         
                         <a href="{% url 'reserver_bien' bien.id %}" class="btn btn-primary">Louer</a>
+                        <a href="{% url 'detail_bien' bien.id %}">Voir les détails</a>
 
                     </div>
                 </div>

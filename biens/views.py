@@ -2,9 +2,9 @@ from django.shortcuts import render , redirect , get_object_or_404
 from .models import Bien
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.utils import timezone
 from datetime import date
 from .forms import BienForm
+from avis.models import Avis
 # Create your views here.
 
 
@@ -12,7 +12,6 @@ from .forms import BienForm
 def liste_biens(request):
     today = date.today()
     biens = Bien.objects.filter(disponibilite=True, date_fin_disponibilite__gte=today) 
-    print(biens)# On affiche uniquement les biens disponibles
     return render(request, 'biens/liste_biens.html', {'biens': biens})
 
 # Vue pour afficher les biens créés par l'utilisateur connecté
@@ -84,3 +83,8 @@ def supprimer_bien(request, bien_id):
         return redirect('mes_biens')
 
     return render(request, 'biens/supprimer_bien.html', {'bien': bien})
+
+def detail_bien(request, bien_id):
+    bien = get_object_or_404(Bien, id=bien_id)
+    avis = Avis.objects.filter(bien=bien)  # Récupérer tous les avis pour ce bien
+    return render(request, 'biens/detail_bien.html', {'bien': bien, 'avis': avis})
