@@ -1,0 +1,83 @@
+/* Styles globaux pour la page de détail du bien */
+
+.container {
+    margin-top: 30px; /* Marge supérieure pour espacer le contenu du haut de la page */
+    display: flex; /* Utiliser Flexbox pour une disposition flexible */
+}
+
+/* Détails du bien */
+.bien-image {
+    max-width: 40%; /* Limiter la largeur de l'image à 40% */
+    height: auto;    /* Conserve les proportions de l'image */
+    border-radius: 8px; /* Coins arrondis pour un effet moderne */
+    margin-right: 20px; /* Espace à droite de l'image */
+}
+
+/* Détails du bien */
+.bien-details {
+    padding: 20px; /* Espace interne pour le contenu */
+    background-color: #f8f8f8; /* Couleur de fond claire */
+    border-radius: 8px; /* Coins arrondis pour un effet moderne */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Légère ombre pour profondeur */
+    flex: 1; /* Permet à la section de détails d'occuper l'espace restant */
+}
+
+/* Statut de disponibilité */
+.disponible {
+    color: green; /* Couleur verte pour le statut disponible */
+    font-weight: bold; /* Texte en gras */
+}
+
+.indisponible {
+    color: red; /* Couleur rouge pour le statut indisponible */
+    font-weight: bold; /* Texte en gras */
+}
+
+/* Section des avis */
+.avis-section {
+    padding: 20px; /* Espace interne pour le contenu */
+    background-color: #f2f2f2; /* Couleur de fond légèrement plus sombre */
+    border-radius: 8px; /* Coins arrondis pour un effet moderne */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Légère ombre pour profondeur */
+    margin-top: 30px; /* Espace au-dessus de la section des avis */
+}
+
+.avis {
+    background-color: #f2f2f2; /* Fond blanc pour chaque avis */
+    border: 1px solid #f2f2f2; /* Bordure légère pour chaque avis */
+    padding: 10px; /* Espace interne pour le contenu */
+    border-radius: 8px; /* Coins arrondis pour un effet moderne */
+    margin-bottom: 10px; /* Espace entre les avis */
+}
+
+/* Boutons */
+.btn {
+    border-radius: 20px; /* Coins arrondis pour les boutons */
+    padding: 10px 20px; /* Espace interne pour les boutons */
+}
+
+.btn-primary {
+    background-color: #ff8c00; /* Couleur orange pour le bouton primaire */
+    border-color: #ff8c00; /* Bordure orange */
+}
+
+.btn-danger {
+    background-color: #dc3545; /* Couleur rouge pour le bouton danger */
+    border-color: #dc3545; /* Bordure rouge */
+}
+
+/* Centre le texte */
+.text-center {
+    text-align: center; /* Centre le texte */
+}
+
+/* Style pour le titre */
+h1 {
+    font-size: 2.5em; /* Taille du texte pour le titre principal */
+    margin-bottom: 20px; /* Espace sous le titre */
+}
+
+h2 {
+    margin-top: 30px; /* Marge supérieure pour espacer le titre des avis */
+    font-size: 2em; /* Taille du texte pour les sous-titres */
+}

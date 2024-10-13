@@ -21,8 +21,8 @@ def ajouter_avis(request, bien_id):
         form = AvisForm()
 
     return render(request, 'avis/ajouter_avis.html', {'form': form, 'bien': bien})
-login_required
 
+@login_required
 def supprimer_avis(request, avis_id):
     avis = get_object_or_404(Avis, id=avis_id, utilisateur=request.user)
     

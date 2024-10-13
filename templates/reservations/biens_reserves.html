@@ -21,8 +21,7 @@
                     <td>{{ reservation.date_debut }}</td>  <!-- Date de début de la réservation -->
                     <td>{{ reservation.date_fin }}</td>    <!-- Date de fin de la réservation -->
                     <td>{{ reservation.date_creation }}</td>  <!-- Date de création de la réservation  cela correspond aussi a la date ou il a payer--> 
-                    <td>(Statut: {{ reservation.get_status_display }})</td>  <!-- Date de création de la réservation  cela correspond aussi a la date ou il a payer--> 
-                    <a href="{% url 'creer_session_paiement' reservation.id %}" class="btn btn-primary">Payer maintenant</a>
+                    {% comment %} <a href="{% url 'creer_session_paiement' reservation.id %}" class="btn btn-primary">Payer maintenant</a> {% endcomment %}
                     
                 </tr>
             {% empty %}

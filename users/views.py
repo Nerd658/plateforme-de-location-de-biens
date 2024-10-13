@@ -4,7 +4,6 @@ from django.contrib.auth import authenticate, login
 
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from profile_utilisateur.views import acceuil 
 import re
 from django.contrib import messages
 from django.shortcuts import render, redirect
@@ -66,7 +65,7 @@ def connexion(request):
             # Si l'authentification est réussie, on connecte l'utilisateur
             login(request, user)
             messages.success(request, "Connexion réussie.")
-            return redirect ('acceuil') # Redirection vers la page d'accueil après la connexion
+            return redirect ('liste_biens') # Redirection vers la page d'accueil après la connexion
         else:
             # Si l'authentification échoue, on affiche un message d'erreur
             messages.error(request, "Nom d'utilisateur ou mot de passe incorrect.")

@@ -1,57 +1,42 @@
+
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOCAPLUS</title>
-    <!-- Lien vers ton fichier CSS -->
+    <title>{% block title %}LOCAPLUS{% endblock %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="{% static 'raccourcis/base.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="{% static 'js/script.js' %}"></script>
     
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMgQuzMnCrHgFf2K3ZGzbhhu1jvJwxE5y1G1YGU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMgQuzMnCrHgFf2K3ZGzbhhu1jvJwxE5y1G1YGU" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'raccourcis/base.css' %}"> <!-- CSS global -->
+    {% block head %}
+    {% endblock %}
 </head>
 <body>
-    <!-- Inclure le header ici -->
     <header>
-        <nav class="header-nav">
-            <!-- Logo -->
-            <div class="logo">
-                <img src="{% static 'raccourcis/logo.png' %} " />
-                {% comment %} <span>LocaPlus</span> {% endcomment %}
-            </div>
-
-            <!-- Sélecteur de catégories et champ de recherche -->
-            <div class="search-container">
-                <select name="categories" id="categories">
-                    <option value="all">All Categories</option>
-                    <!-- Ajoute d'autres catégories ici -->
-                </select>
-                <input type="text" placeholder="Search for more than 20,000 products" />
-                <button type="submit"><i class="fa fa-search"></i></button>
-            </div>
-
-            <!-- Icônes de support, profil et panier -->
-        <div class="nav-icons">
-            {% if user.is_authenticated %}
-                <!-- Si l'utilisateur est connecté, afficher son nom -->
-                <span class="user-name"> {{ user.username }}</span>
-                {% comment %} <a href="{% url 'profile' %}">  linen vers le compte  {% endcomment %}
-            {% else %}
-                <!-- Si l'utilisateur n'est pas connecté, afficher l'icône de connexion -->
-                <a href="{% url 'connexion' %}">
-                    <i class="fas fa-user"></i> <!-- Icône utilisateur -->
-                </a>
-            {% endif %}
-
-            
-            <i class="fas fa-shopping-cart cart-icon"></i> 
-            <span class="cart-total">$1290.00</span>
-        </div>
-        </nav>
+        {% include 'raccourcis/header.html' %}
     </header>
-    
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        {% include 'raccourcis/footer.html' %}
+    </footer>
+</body>
+</html>
+
+
+
+{% comment %} {% extends 'raccourcis/header.html' %}
 
     <!-- Contenu de la page -->
     <main>
@@ -82,16 +67,17 @@
             <ul>
                 <a href="{% url 'liste_biens' %} " class="btn btn-success">Voir les Biens Disponibles</a>
             </ul>
-           
+
+
             
         </li>
         
         
 
-    </main>
+    </main> {% endcomment %}
 
     {% comment %} le footer  {% endcomment %}
-    <H1> footer</H1>
+    {% comment %} <H1> footer</H1> {% endcomment %}
 
     {% comment %} <footer class="footer">
        
@@ -128,9 +114,7 @@
     </footer> {% endcomment %}
     
     <!-- Lien vers les scripts JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="{% static 'js/script.js' %}"></script>
+   
     
-</body>
-</html>
+{% comment %} </body>
+</html> {% endcomment %}

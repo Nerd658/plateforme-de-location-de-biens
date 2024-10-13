@@ -17,12 +17,10 @@ header {
 .logo {
     display: flex;
     align-items: center;
-    font-size: 24px;
-    font-weight: bold;
 }
 
 .logo img {
-    height: 60px;
+    height: 60px; /* Ajuste la taille du logo */
     margin-right: 10px;
 }
 
@@ -54,234 +52,43 @@ header {
 
 .search-container button {
     padding: 10px;
-    background-color: #ff9900;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
+    background-color: orange; /* Couleur de fond orange */
+    border: none; /* Pas de bordure */
+    border-radius: 5px; /* Coins arrondis */
+    color: white; /* Couleur du texte */
+    cursor: pointer; /* Curseur en main */
 }
 
 .search-container button i {
-    font-size: 18px;
+    font-size: 18px; /* Taille de l'icône de recherche */
 }
 
 /* Section utilisateur et panier */
-.user-cart {
-    display: flex;
-    align-items: center;
-}
-
-.user-cart a {
-    margin-right: 20px;
-    color: #333;
-    font-size: 18px;
-    text-decoration: none;
-}
-
-.user-cart a:hover {
-    color: #ff9900;
-}
-
-.cart {
-    display: flex;
-    align-items: center;
-}
-
-.cart-total {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    margin-left: 10px;
-}
-
-.cart-total:hover {
-    color: #ff9900;
-}
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f8f8f8;
-    padding: 10px 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.logo img {
-    height: 50px; /* Ajuste la taille du logo */
-
-    
-}
-
-
-.nav-links {
-    display: flex;
-    align-items: center;
-}
-
-.nav-links select, .nav-links input, .nav-links .search-button {
-    margin-left: 10px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.search-button {
-    background-color: #ff9800; /* Couleur de fond */
-    color: white; /* Couleur du texte */
-    border: none; /* Pas de bordure */
-    cursor: pointer; /* Curseur en main */
-    border-radius: 4px; /* Coins arrondis */
-}
-
-.search-button:hover {
-    background-color: #e68a00; /* Couleur de fond au survol */
-}
-
 .nav-icons {
     display: flex;
     align-items: center;
-}
-
-.nav-icons {
-    display: flex;
-    align-items: center;
-}
-
-.nav-icons img {
-    width: 30px; /* Assure que la largeur est correcte */
-    height: auto; /* Conserve les proportions de l'image */
-    margin-left: 10px; /* Espace entre les icônes */
-}
-
-.nav-icons i {
-    font-size: 30px; /* Taille des icônes */
-    color: #ff9800; /* Couleur jaune pour l'icône utilisateur */
-    margin-left: 10px; /* Espace à gauche entre les icônes */
 }
 
 .user-name {
     margin-left: 10px; /* Espace à gauche du nom d'utilisateur */
     font-weight: bold; /* Mettre le nom d'utilisateur en gras */
     color: #333; /* Couleur du texte */
-    font-size: 28px;
+    font-size: 18px; /* Ajuste la taille du texte */
 }
 
-.cart-icon {
-    color: #333; /* Couleur de l'icône du panier */
-    font-size: 30px; /* Taille de l'icône du panier */
+.nav-icons a {
+    color: #333; /* Couleur du lien d'utilisateur */
+    font-size: 30px; /* Taille de l'icône */
     margin-left: 10px; /* Espace à gauche */
 }
 
-.cart-total {
-    margin-left: 10px; /* Espace à gauche du total du panier */
-    font-weight: bold; /* Mettre le total en gras */
-    color: #333; /* Couleur du texte */
+.nav-icons a:hover {
+    color: orange; /* Couleur au survol */
 }
 
-
-
-/* Style général pour le footer */
-
-
-footer {
-    background-color: #333;
-    color: white;
-    padding: 40px 0;
-    font-family: Arial, sans-serif;
+/* Bouton "Mon Compte" */
+.btn-secondary {
+    background-color: orange; /* Couleur de fond */
+    border: none; /* Pas de bordure */
+    color: white; /* Couleur du texte */
 }
-
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Liens rapides */
-.footer-links {
-    flex: 1;
-}
-
-.footer-links h4 {
-    margin-bottom: 20px;
-    font-size: 20px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.footer-links ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-links ul li {
-    margin-bottom: 10px;
-}
-
-.footer-links ul li a {
-    color: white;
-    text-decoration: none;
-}
-
-.footer-links ul li a:hover {
-    color: #ff9900;
-}
-
-/* Section contact */
-.footer-contact {
-    flex: 1;
-}
-
-.footer-contact h4 {
-    margin-bottom: 20px;
-    font-size: 20px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.footer-contact p {
-    margin: 10px 0;
-}
-
-/* Réseaux sociaux */
-.footer-social {
-    flex: 1;
-    text-align: right;
-}
-
-.footer-social h4 {
-    margin-bottom: 20px;
-    font-size: 20px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.footer-social a {
-    margin-left: 10px;
-    display: inline-block;
-}
-
-.footer-social img {
-    width: 30px;
-    height: 30px;
-}
-
-/* Bas de page */
-.footer-bottom {
-    text-align: center;
-    padding-top: 20px;
-    border-top: 1px solid #555;
-    margin-top: 20px;
-    font-size: 14px;
-}
-
-

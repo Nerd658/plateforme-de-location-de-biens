@@ -45,9 +45,6 @@ def creer_session_paiement(request, reservation_id):
 # paiements/views.py
 
 def paiement_reussi(request):
-    session_id = request.GET.get('session_id')
-    
-    # Ici, on pourras récupérer des informations supplémentaires sur le paiement si nécessaire
     return render(request, 'paiements/success.html')
 
 def paiement_annule(request):

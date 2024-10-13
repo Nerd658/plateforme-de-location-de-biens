@@ -1,0 +1,57 @@
+{% extends 'raccourcis/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'biens/css/bien_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <!-- Colonne gauche avec l'image et les détails du bien -->
+        <div class="col-md-8">
+            <h1 class="text-center">{{ bien.titre }}</h1>
+            <div class="text-center">
+                <img src="{{ bien.photo.url }}" alt="{{ bien.titre }}" class="img-fluid bien-image">
+            </div>
+            <div class="bien-details mt-4">
+                <p><strong>Catégorie : </strong>{{ bien.categorie }}</p>
+                <p><strong>Prix : </strong>{{ bien.prix }} FCFA</p>
+                <p><strong>Description : </strong>{{ bien.description }}</p>
+                <p><strong>Disponibilité : </strong> 
+                    {% if bien.disponibilite %}
+                        <span class="disponible">Disponible</span>
+                    {% else %}
+                        <span class="indisponible">Indisponible</span>
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+
+        <!-- Colonne droite avec les avis -->
+        <div class="col-md-4 avis-section mt-4">
+            <h2>Avis</h2>
+            {% if bien.avis_set.all %}
+                {% for avis in bien.avis_set.all %}
+                    <div class="avis mb-3">
+                        <p><strong>{{ avis.utilisateur.username }} :</strong> {{ avis.note }}/5</p>
+                        <p>{{ avis.texte }}</p>
+                        <p class="text-muted">Posté le : {{ avis.date_creation }}</p>
+
+                        {% if avis.utilisateur == request.user %}
+                            <a href="{% url 'supprimer_avis' avis.id %}" class="btn btn-danger">Supprimer</a>
+                        {% endif %}
+                    </div>
+                    <hr>
+                {% endfor %}
+            {% else %}
+                <p>Aucun avis pour ce bien.</p>
+            {% endif %}
+            <!-- Lien pour ajouter un avis -->
+            <div class="text-center mt-4">
+                <a href="{% url 'ajouter_avis' bien.id %}" class="btn btn-primary">Ajouter un avis</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

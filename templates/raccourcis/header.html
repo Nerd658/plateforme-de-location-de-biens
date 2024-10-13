@@ -1,0 +1,39 @@
+{% load static %}
+
+<nav class="header-nav">
+            <!-- Logo -->
+            <div class="logo">
+                <img src="{% static 'raccourcis/logo.png' %} " />
+                {% comment %} <span>LocaPlus</span> {% endcomment %}
+            </div>
+
+            <!-- Sélecteur de catégories et champ de recherche -->
+            <div class="search-container">
+                <select name="categories" id="categories">
+                    <option value="all">All Categories</option>
+                    <!-- Ajoute d'autres catégories ici -->
+                </select>
+                <input type="text" placeholder="Search for more than 20,000 products" />
+                <button type="submit">Rechercher<i class="fa fa-search"></i></button>
+            </div>
+
+            <!-- Icônes de support, profil et panier -->
+            <div class="nav-icons">
+                {% if user.is_authenticated %}
+                    <!-- Si l'utilisateur est connecté, afficher son nom -->
+                    <span class="user-name"> {{ user.username }}</span>
+                    {% comment %} <a href="{% url 'profile' %}">  linen vers le compte  {% endcomment %}
+                {% else %}
+                    <!-- Si l'utilisateur n'est pas connecté, afficher l'icône de connexion -->
+                    <a href="{% url 'connexion' %}">
+                        <i class="fas fa-user"></i> <!-- Icône utilisateur -->
+                    </a>
+                {% endif %}
+
+                
+                <i></i> 
+                <a class="btn btn-secondary" style="background-color: orange; border: none; color: white;" href="{% url 'profile' %}">Mon Compte</a>
+
+
+            </div>
+        </nav>

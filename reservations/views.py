@@ -35,10 +35,9 @@ def reserver_bien(request, bien_id):
                     reservation = form.save(commit=False)
                     reservation.utilisateur = request.user
                     reservation.bien = bien
-                    reservation.status = 'en_attente' 
                     reservation.save()
                     messages.success(request, "Réservation effectuée avec succès!")
-                return redirect('biens_reserves')  # Redirection vers une page qui montre les réservations de l'utilisateur
+                return redirect('creer_session_paiement', reservation_id=reservation.id)
     else:
         form = ReservationForm()
 
@@ -60,6 +59,4 @@ def annuler_reservation(request, reservation_id):
     
     # On supprime la réservation
     reservation.delete()
-    
-    messages.success(request, "Réservation annulée avec succès!")
     return redirect('biens_reserves')  # Redirection vers la page des réservation

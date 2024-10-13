@@ -9,6 +9,7 @@ from avis.models import Avis
 
 
 # Vue pour afficher la liste de tous les biens disponibles
+
 def liste_biens(request):
     today = date.today()
     biens = Bien.objects.filter(disponibilite=True, date_fin_disponibilite__gte=today) 
@@ -87,4 +88,4 @@ def supprimer_bien(request, bien_id):
 def detail_bien(request, bien_id):
     bien = get_object_or_404(Bien, id=bien_id)
     avis = Avis.objects.filter(bien=bien)  # Récupérer tous les avis pour ce bien
-    return render(request, 'biens/detail_bien.html', {'bien': bien, 'avis': avis})
+    return render(request, 'biens/bien_detail.html', {'bien': bien, 'avis': avis})

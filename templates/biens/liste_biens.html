@@ -1,28 +1,31 @@
 {% extends 'raccourcis/base.html' %}
-
+{% load static %}
 {% block content %}
 <div class="container mt-5">
-    <h2>Liste des Biens Disponibles</h2>
-    <div class="row">
+    <h2 class="text-center">Découvrez Nos Meilleures Offres</h2>
+    <p class="text-center lead">Une sélection exclusive de biens disponibles à la location. Trouvez celui qui vous correspond !</p>
+    <div class="row mt-4">
         {% for bien in biens %}
             <div class="col-md-4">
-                <div class="card mb-4">
+                <div class="card mb-4 shadow-sm">
                     <img src="{{ bien.photo.url }}" class="card-img-top" alt="{{ bien.titre }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ bien.titre }}</h5>
-                        <p class="card-text">{{ bien.description }}</p>
+                        <p class="card-text text-muted">{{ bien.description|truncatewords:15 }}</p>
                         <p class="card-text"><strong>Prix:</strong> {{ bien.prix }} FCFA</p>
                         <p class="card-text"><strong>Catégorie:</strong> {{ bien.categorie }}</p>
                         
-                        <a href="{% url 'reserver_bien' bien.id %}" class="btn btn-primary">Louer</a>
-                        <a href="{% url 'detail_bien' bien.id %}">Voir les détails</a>
-
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="{% url 'reserver_bien' bien.id %}" class="btn btn-primary btn-block">Louer maintenant</a>
+                            <a href="{% url 'detail_bien' bien.id %}" class="btn btn-secondary">Voir les détails</a>
+                        </div>
                     </div>
                 </div>
             </div>
         {% empty %}
-            <p>Aucun bien disponible pour le moment.</p>
+            <p class="text-center">Aucun bien disponible pour le moment. Revenez plus tard pour découvrir nos nouvelles offres.</p>
         {% endfor %}
     </div>
 </div>
 {% endblock %}
+
