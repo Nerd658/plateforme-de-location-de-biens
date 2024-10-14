@@ -2,8 +2,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Reservation
 from .forms import ReservationForm
 from django.contrib.auth.decorators import login_required
-from biens.models import Bien  # Importer le modèle Bien
+from biens.models import Bien 
 from django.contrib import messages  # Pour afficher des messages d'erreur ou de succès
+from django.utils import timezone
 
 @login_required
 def reserver_bien(request, bien_id):
@@ -35,6 +36,7 @@ def reserver_bien(request, bien_id):
                     reservation = form.save(commit=False)
                     reservation.utilisateur = request.user
                     reservation.bien = bien
+                    reservation.date_paiement = timezone.now() 
                     reservation.save()
                     messages.success(request, "Réservation effectuée avec succès!")
                 return redirect('creer_session_paiement', reservation_id=reservation.id)
@@ -54,7 +56,7 @@ def biens_reserves(request):
     return render(request, 'reservations/biens_reserves.html', context)
 
 @login_required
-def annuler_reservation(request, reservation_id):
+def annuler_reservation(request, reservation_id):  #ici cest aussi pour supprimer
     reservation = get_object_or_404(Reservation, id=reservation_id, utilisateur=request.user)
     
     # On supprime la réservation

@@ -1,0 +1,78 @@
+body {
+    background-color: #f8f9fa;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.75rem; /* Taille réduite pour le titre */
+    color: #ff8c00;
+    margin-bottom: 20px;
+}
+
+.list-group {
+    width: 70%; /* Réduction de la largeur */
+    margin: 0 auto;
+}
+
+.list-group-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px; /* Réduction des bords arrondis */
+    margin-bottom: 10px; /* Espacement réduit entre les items */
+    padding: 10px; /* Espacement intérieur réduit */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.list-group-item:hover {
+    transform: translateY(-3px); /* Effet de hover réduit */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 1.25rem; /* Taille du titre des biens réduite */
+    color: #333;
+    margin-bottom: 8px;
+}
+
+p {
+    font-size: 0.9rem; /* Taille de texte plus petite */
+    color: #555;
+}
+
+img.img-fluid {
+    width: 100%;
+    height: auto;
+    border-radius: 6px; /* Bords arrondis plus petits */
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+ul {
+    display: flex;
+    justify-content: flex-start;
+    gap: 8px; /* Espacement réduit entre les boutons */
+}
+
+ul a {
+    padding: 6px 12px; /* Boutons plus petits */
+    text-decoration: none;
+    color: white;
+    border-radius: 4px; /* Bords des boutons plus petits */
+    background-color: #ff8c00;
+    font-weight: bold;
+    font-size: 0.85rem; /* Taille du texte réduite dans les boutons */
+    transition: background-color 0.3s;
+}
+
+ul a:hover {
+    background-color: #e07b00;
+}
+
+ul a.btn-secondary {
+    background-color: #6c757d;
+}
+
+ul a.btn-secondary:hover {
+    background-color: #565e64;
+}

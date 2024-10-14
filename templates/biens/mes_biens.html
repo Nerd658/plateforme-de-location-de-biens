@@ -1,25 +1,37 @@
-{% extends 'raccourcis/base.html' %}  <!-- Étendre le base.html -->
+{% extends 'raccourcis/base.html' %} 
+
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'biens/css/mes_biens.css' %}"> 
+{% endblock %}
+
 
 {% block content %}
-<h1>Mes biens</h1>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Mes biens</h1>
 
-<ul class="list-group">
-    {% for bien in biens %}
-        <li class="list-group-item">
-            <h2>{{ bien.titre }}</h2>
-            <p>{{ bien.description }}</p>
-            <p>Prix : {{ bien.prix }} FCFA</p>
-            <p>Catégorie : {{ bien.categorie }}</p>
-            <p>Disponible du {{ bien.date_debut_disponibilite }} au {{ bien.date_fin_disponibilite }}</p>
-            <img src="{{ bien.photo.url }}" alt="Photo du bien" class="img-fluid">
-            <ul>
-                <a href="{% url 'modifier_bien' bien.id  %}" class="btn btn-secondary">modifer</a>
-                <a href="{% url 'supprimer_bien' bien.id  %}" class="btn btn-secondary">sup</a>
-            </ul>
-        </li>
-    {% endfor %}
-</ul>
+    <div class="row">
+        {% for bien in biens %}
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm">
+                    <img src="{{ bien.photo.url }}" alt="{{ bien.titre }}" class="card-img-top img-fluid">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ bien.titre }}</h5>
+                        <p class="card-text">{{ bien.description|truncatewords:20 }}</p>
+                        <p class="card-text"><strong>Prix :</strong> {{ bien.prix }} FCFA /jours</p>
+                        <p class="card-text"><strong>Catégorie :</strong> {{ bien.categorie }}</p>
+                        <p class="card-text"><strong>Disponible :</strong> du {{ bien.date_debut_disponibilite }} au {{ bien.date_fin_disponibilite }}</p>
 
-
-
+                        <div class="d-flex justify-content-between">
+                            <a href="{% url 'modifier_bien' bien.id %}" class="btn btn-warning btn-sm">Modifier</a>
+                            <a href="{% url 'supprimer_bien' bien.id %}" class="btn btn-danger btn-sm">Supprimer</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p class="text-center">Vous n'avez encore créé aucun bien.</p>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

@@ -1,26 +1,34 @@
-<!-- templates/reservations/reserver_bien.html -->
-
 {% extends 'raccourcis/base.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'reservations/css/reserver_bien.css' %}">
+{% endblock %}
 
 {% block content %}
-<h1>Réserver {{ bien.titre }}</h1>
+<div class="reservation-container">
+    <h1>Réservez maintenant: {{ bien.titre }}</h1>
 
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}  <!-- Formulaire de réservation avec dates -->
-    <button type="submit" class="btn btn-primary">Réserver</button>
-    <!-- reservations/detail_bien.html -->
+    <div class="reservation-details">
+        <img src="{{ bien.photo.url }}" alt="{{ bien.titre }}" class="reservation-image">
+        <div class="reservation-info">
+            <p><strong>Catégorie :</strong> {{ bien.categorie }}</p>
+            <p><strong>Prix :</strong> {{ bien.prix }} FCFA</p>
+            <p><strong>Description :</strong> {{ bien.description }}</p>
+        </div>
+    </div>
 
-    
+    <form method="POST" class="reservation-form">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Formulaire de réservation avec dates -->
+        <button type="submit" class="btn btn-primary btn-block">Réserver</button>
+    </form>
 
-</form>
-
-{% if messages %}
+    {% if messages %}
     <ul class="messages">
         {% for message in messages %}
             <li class="{{ message.tags }}">{{ message }}</li>
         {% endfor %}
     </ul>
-{% endif %}
-
+    {% endif %}
+</div>
 {% endblock %}

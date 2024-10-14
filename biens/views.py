@@ -12,8 +12,26 @@ from avis.models import Avis
 
 def liste_biens(request):
     today = date.today()
-    biens = Bien.objects.filter(disponibilite=True, date_fin_disponibilite__gte=today) 
-    return render(request, 'biens/liste_biens.html', {'biens': biens})
+    # Récupérer tous les biens disponibles
+    biens = Bien.objects.filter(disponibilite=True, date_fin_disponibilite__gte=today)
+
+    # Récupérer les paramètres de recherche
+    search_query = request.GET.get('q', '')
+    selected_category = request.GET.get('categories', 'all')
+
+    # Filtrer par nom
+    if search_query:
+        biens = biens.filter(titre__icontains=search_query)  # Filtrer par titre
+
+    # Filtrer par catégorie
+    if selected_category != 'all':
+        biens = biens.filter(categorie=selected_category)  # Filtrer par catégorie
+
+    # Récupérer les catégories pour le formulaire de recherche
+    categories = Bien.CATEGORIES
+
+    return render(request, 'biens/liste_biens.html', {'biens': biens, 'search_query': search_query, 'selected_category': selected_category, 'categories': categories})
+
 
 # Vue pour afficher les biens créés par l'utilisateur connecté
 @login_required 
@@ -49,7 +67,7 @@ def creer_bien(request):
         )
 
         messages.success(request, 'Bien créé avec succès!')
-        return redirect('acceuil')  # Redirige vers la page d'accueil après la création
+        return redirect('mes_biens')  # Redirige vers la page d'accueil après la création
 
     return render(request, 'biens/creer_bien.html' ,  {'categories': categories})  # Afficher le formulaire de création
 

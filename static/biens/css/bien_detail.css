@@ -7,7 +7,7 @@
 
 /* Détails du bien */
 .bien-image {
-    max-width: 40%; /* Limiter la largeur de l'image à 40% */
+    max-width: 90%; /* Limiter la largeur de l'image à 40% */
     height: auto;    /* Conserve les proportions de l'image */
     border-radius: 8px; /* Coins arrondis pour un effet moderne */
     margin-right: 20px; /* Espace à droite de l'image */
@@ -16,7 +16,7 @@
 /* Détails du bien */
 .bien-details {
     padding: 20px; /* Espace interne pour le contenu */
-    background-color: #f8f8f8; /* Couleur de fond claire */
+    background-color: white; /* Couleur de fond claire */
     border-radius: 8px; /* Coins arrondis pour un effet moderne */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Légère ombre pour profondeur */
     flex: 1; /* Permet à la section de détails d'occuper l'espace restant */
@@ -36,15 +36,15 @@
 /* Section des avis */
 .avis-section {
     padding: 20px; /* Espace interne pour le contenu */
-    background-color: #f2f2f2; /* Couleur de fond légèrement plus sombre */
+    background-color: white; /* Couleur de fond légèrement plus sombre */
     border-radius: 8px; /* Coins arrondis pour un effet moderne */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Légère ombre pour profondeur */
     margin-top: 30px; /* Espace au-dessus de la section des avis */
 }
 
 .avis {
-    background-color: #f2f2f2; /* Fond blanc pour chaque avis */
-    border: 1px solid #f2f2f2; /* Bordure légère pour chaque avis */
+    background-color: white; /* Fond blanc pour chaque avis */
+    border: 1px solid white; /* Bordure légère pour chaque avis */
     padding: 10px; /* Espace interne pour le contenu */
     border-radius: 8px; /* Coins arrondis pour un effet moderne */
     margin-bottom: 10px; /* Espace entre les avis */

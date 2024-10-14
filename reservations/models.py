@@ -13,6 +13,7 @@ class Reservation(models.Model):
     date_reservation = models.DateTimeField(auto_now_add=True)  # Date de la réservation
     date_debut = models.DateField()  # Date de début de location
     date_fin = models.DateField()  # Date de fin de location
+    date_paiement = models.DateTimeField(null=True, blank=True) 
 
     def __str__(self):
         return f"Réservation de {self.utilisateur} pour {self.bien} du {self.date_debut} au {self.date_fin}"

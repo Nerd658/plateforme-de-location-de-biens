@@ -1,0 +1,73 @@
+/* Style général du conteneur */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre de la page */
+h1 {
+    color: #FF6F00;  /* Couleur orange principale */
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-size: 2.2rem;
+}
+
+/* Tableau des réservations */
+.table {
+    width: 100%;
+    margin-bottom: 30px;
+    border-collapse: collapse;
+    font-size: 1.05rem;
+}
+
+.table thead th {
+    background-color: #FF6F00;  /* Orange pour l'en-tête */
+    color: white;
+    font-weight: bold;
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 2px solid #ddd;
+    font-size: 1.1rem;
+}
+
+.table tbody tr {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f1f1;  /* Surbrillance lors du survol */
+}
+
+.table td {
+    padding: 12px 15px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Bouton Annuler */
+.btn-danger {
+    background-color: #FF4500;  /* Rouge-orangé pour le bouton annuler */
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-danger:hover {
+    background-color: #e63900;  /* Rouge plus foncé au survol */
+}
+
+.text-center {
+    font-size: 1.1rem;
+    color: #333;
+    margin-top: 20px;
+}

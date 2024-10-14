@@ -1,8 +1,6 @@
 from django.shortcuts import render
 
-# Create your views here.
-# paiements/views.py
-
+from django.utils import timezone
 import stripe
 from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
@@ -26,7 +24,7 @@ def creer_session_paiement(request, reservation_id):
         payment_method_types=['card'],
         line_items=[{
             'price_data': {
-                'currency': 'eur',
+                'currency': 'xof',
                 'product_data': {
                     'name': reservation.bien.titre,
                 },
@@ -35,7 +33,8 @@ def creer_session_paiement(request, reservation_id):
             'quantity': 1,
         }],
         mode='payment',
-        success_url=request.build_absolute_uri('/paiements/success/') + '?session_id={CHECKOUT_SESSION_ID}',
+        success_url=request.build_absolute_uri(f'/paiements/success/{reservation.id}/') + '?session_id={CHECKOUT_SESSION_ID}',
+
         cancel_url=request.build_absolute_uri('/paiements/cancel/'),
     )
 
@@ -44,8 +43,18 @@ def creer_session_paiement(request, reservation_id):
 
 # paiements/views.py
 
-def paiement_reussi(request):
-    return render(request, 'paiements/success.html')
+def paiement_reussi(request, reservation_id):
+    # Récupérer la réservation pour mise à jour (si nécessaire)
+    reservation = get_object_or_404(Reservation, id=reservation_id)
+
+    # Mettre à jour la date de paiement
+    reservation.date_paiement = timezone.now()  # Définit la date de paiement à maintenant
+    reservation.save()  # Sauvegarde les modifications
+
+    # Rediriger vers la page des réservations
+    return redirect('biens_reserves') 
+
+
 
 def paiement_annule(request):
     return render(request, 'paiements/cancel.html')

@@ -1,0 +1,56 @@
+.reservation-container {
+    max-width: 900px;
+    margin: 20px auto; /* Ajoute de l'espace autour du conteneur */
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #FF6F00; /* Orange principal */
+    margin-bottom: 20px; /* Ajoute de l'espace en dessous du titre */
+}
+
+.reservation-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.reservation-image {
+    width: 40%;
+    border-radius: 10px;
+}
+
+.reservation-info {
+    width: 55%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.reservation-form {
+    margin-top: 20px;
+}
+
+.btn-primary {
+    background-color: #FF6F00;
+    border: none;
+    width: 100%;
+    padding: 10px;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.messages {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #e9ecef;
+    border-left: 5px solid #FF6F00;
+}
+
+.messages li {
+    color: #343a40;
+}

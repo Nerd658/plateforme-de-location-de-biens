@@ -73,7 +73,7 @@ header {
     margin-left: 10px; /* Espace à gauche du nom d'utilisateur */
     font-weight: bold; /* Mettre le nom d'utilisateur en gras */
     color: #333; /* Couleur du texte */
-    font-size: 18px; /* Ajuste la taille du texte */
+    font-size: 25px; /* Ajuste la taille du texte */
 }
 
 .nav-icons a {
@@ -92,3 +92,4 @@ header {
     border: none; /* Pas de bordure */
     color: white; /* Couleur du texte */
 }
+

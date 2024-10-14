@@ -8,7 +8,7 @@
 {% block content %}
 <div class="container mt-5">
     <div class="row">
-        <!-- Colonne gauche avec l'image et les détails du bien -->
+
         <div class="col-md-8">
             <h1 class="text-center">{{ bien.titre }}</h1>
             <div class="text-center">
@@ -16,7 +16,7 @@
             </div>
             <div class="bien-details mt-4">
                 <p><strong>Catégorie : </strong>{{ bien.categorie }}</p>
-                <p><strong>Prix : </strong>{{ bien.prix }} FCFA</p>
+                <p><strong>Prix : </strong>{{ bien.prix }} FCFA/jours</p>
                 <p><strong>Description : </strong>{{ bien.description }}</p>
                 <p><strong>Disponibilité : </strong> 
                     {% if bien.disponibilite %}
@@ -25,10 +25,11 @@
                         <span class="indisponible">Indisponible</span>
                     {% endif %}
                 </p>
+                <a href="{% url 'reserver_bien' bien.id %}" class="btn btn-primary btn-block">Louer maintenant</a>
+
             </div>
         </div>
 
-        <!-- Colonne droite avec les avis -->
         <div class="col-md-4 avis-section mt-4">
             <h2>Avis</h2>
             {% if bien.avis_set.all %}
@@ -47,7 +48,7 @@
             {% else %}
                 <p>Aucun avis pour ce bien.</p>
             {% endif %}
-            <!-- Lien pour ajouter un avis -->
+         
             <div class="text-center mt-4">
                 <a href="{% url 'ajouter_avis' bien.id %}" class="btn btn-primary">Ajouter un avis</a>
             </div>

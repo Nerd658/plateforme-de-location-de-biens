@@ -22,7 +22,7 @@ def inscription(request):
 
         # Récupération des données directement de request.POST
         username = request.POST.get("username")
-        email = request.POST.get("email")  # Assurez-vous d'avoir un champ email dans le formulaire
+        email = request.POST.get("email") 
         password1 = request.POST.get("password1")
         password2 = request.POST.get("password2")
 
@@ -39,7 +39,7 @@ def inscription(request):
             messages.error(request, "Veuillez renseigner les mêmes mots de passe.")
         elif form.is_valid():  # Validation du formulaire
             user = form.save(commit=False)  # Ne pas sauvegarder tout de suite
-            user.email = email  # enregistrer l'email
+            user.email = email  
             user.save()  # Maintenant, sauvegardez l'utilisateur
             messages.success(request, "Inscription réussie !")
             return redirect('connexion')

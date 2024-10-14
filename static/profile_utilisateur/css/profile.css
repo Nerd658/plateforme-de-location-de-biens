@@ -1,0 +1,49 @@
+.container {
+    max-width: 900px; /* Limiter la largeur de la page */
+    margin: 0 auto; /* Centrer le contenu */
+    padding: 20px; /* Espacement interne */
+    border: 1px solid #ddd; /* Bordure autour de la zone de contenu */
+    border-radius: 8px; /* Coins arrondis */
+    background-color: #f9f9f9; /* Couleur de fond */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+h1 {
+    color: orange; /* Votre couleur principale */
+    text-align: center; /* Centrer le titre */
+}
+
+.profil-info, .reservations-info, .biens-info {
+    margin-bottom: 20px; /* Espacement entre les sections */
+    padding: 15px; /* Espacement interne */
+    border: 1px solid #ddd; /* Bordure autour de chaque section */
+    border-radius: 8px; /* Coins arrondis */
+    background-color: #fff; /* Couleur de fond des sections */
+}
+
+.table {
+    width: 100%; /* Prendre toute la largeur */
+    margin-top: 20px; /* Espace au-dessus du tableau */
+}
+
+.table th {
+    background-color: #007bff; /* Couleur de fond des en-têtes */
+    color: white; /* Couleur du texte des en-têtes */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f2f2f2; /* Alternance de couleurs pour les lignes */
+}
+
+.table-hover tbody tr:hover {
+    background-color: #e9ecef; /* Couleur au survol */
+}
+
+.btn-primary {
+    background-color: orange; /* Couleur de fond du bouton de création de bien */
+    border: none; /* Enlever la bordure */
+}
+
+.btn-primary:hover {
+    background-color: darkorange; /* Couleur au survol du bouton */
+}
